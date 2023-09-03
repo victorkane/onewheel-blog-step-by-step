@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-
+import { json } from "@remix-run/node";
 export const loader = async () => {
   const posts = [
     {
@@ -11,12 +11,7 @@ export const loader = async () => {
       title: "Trail Riding with Onewheel",
     },
   ];
-  const postsString = JSON.stringify({ posts });
-  return new Response(postsString, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  return json({ posts });
 };
 
 export default function PostsRoute() {
