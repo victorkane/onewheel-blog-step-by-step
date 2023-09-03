@@ -1,5 +1,6 @@
-import { Link } from "@remix-run/react";
-export default function PostsRoute() {
+import { Link, useLoaderData } from "@remix-run/react";
+
+export const loader = async () => {
   const posts = [
     {
       slug: "my-first-post",
@@ -10,6 +11,16 @@ export default function PostsRoute() {
       title: "Trail Riding with Onewheel",
     },
   ];
+  const postsString = JSON.stringify({ posts });
+  return new Response(postsString, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export default function PostsRoute() {
+  const { posts } = useLoaderData();
 
   return (
     <main>
