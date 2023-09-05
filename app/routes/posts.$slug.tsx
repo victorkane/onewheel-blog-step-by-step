@@ -1,14 +1,22 @@
 import { marked } from "marked";
-import { LoaderFunction, json } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getPost } from "~/models/post.server";
+import invariant from "tiny-invariant";
+
+type LoaderData = {
+  title: string;
+  html: string;
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   const { slug } = params;
+  invariant(slug, "slug is required");
   const post = await getPost(slug);
+  invariant(post, `post not found: ${slug}`);
   const html = marked(post.markdown);
-
-  return json({ title: post.title, html });
+  return json<LoaderData>({ title: post.title, html });
 };
 
 export default function PostRoute() {
