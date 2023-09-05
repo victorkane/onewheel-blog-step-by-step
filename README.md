@@ -1,4 +1,33 @@
-# Remix Indie Stack
+# OneWheel Blog course by Kent C. Dodds
+
+- To freshen up my existing practice with Remix, I am following the 2022 Up and Running with Remix course, but using the current Indie Stack, and making atomic commits along the way.
+- I'm including here references and lesson notes
+
+## Ref
+
+- [Kent C. Dodds 2022 Egghead Up and Running with Remix](https://egghead.io/courses/up-and-running-with-remix-b82b6bb6)
+  - [GH Repo onewheel-blog](https://github.com/kentcdodds/onewheel-blog)
+
+## Lesson notes
+
+### Lesson 07
+
+- update the prisma schema in `prisma/schema.prisma` with our `post` model
+- do `npx prisma db push` in order to update our local SQL Lite with the specified model
+- we can now open up our SQLite db in an app like DB Browser and see the schema registered there; no data yet
+- Seed some data
+  - Add posts data to seed function in `prisma/seed.ts`
+  - Stop the dev execution of the app
+  - Run `npx prisma db seed`
+  - Run `npx run dev` to get our server up and running again
+  - Check out db also in DB Browser or similar
+- Fetch the posts from the database instead of from hard-coded JSON.
+  - edit `posts.server.ts` to do this (see commit)
+  - verify all fields fetched from seeded db via Network > Preview (posts data) using browser inspect
+
+---
+
+## Remix Indie Stack
 
 ![The Remix Indie Stack](https://repository-images.githubusercontent.com/465928257/a241fa49-bd4d-485a-a2a5-5cb8e4ee0abf)
 
@@ -8,7 +37,7 @@ Learn more about [Remix Stacks](https://remix.run/stacks).
 npx create-remix@latest --template remix-run/indie-stack
 ```
 
-## What's in the stack
+### What's in the stack
 
 - [Fly app deployment](https://fly.io) with [Docker](https://www.docker.com/)
 - Production-ready [SQLite Database](https://sqlite.org)
@@ -26,13 +55,13 @@ npx create-remix@latest --template remix-run/indie-stack
 
 Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
 
-## Quickstart
+### Quickstart
 
 Click this button to create a [Gitpod](https://gitpod.io) workspace with the project set up and Fly pre-installed
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/remix-run/indie-stack/tree/main)
 
-## Development
+### Development
 
 - Initial setup:
 
@@ -53,7 +82,7 @@ The database seed script creates a new user with some data you can use to get st
 - Email: `rachel@remix.run`
 - Password: `racheliscool`
 
-### Relevant code:
+#### Relevant code:
 
 This is a pretty simple note-taking app, but it's a good example of how you can build a full stack app with Prisma and Remix. The main functionality is creating users, logging in and out, and creating and deleting notes.
 
@@ -61,7 +90,7 @@ This is a pretty simple note-taking app, but it's a good example of how you can 
 - user sessions, and verifying them [./app/session.server.ts](./app/session.server.ts)
 - creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts)
 
-## Deployment
+### Deployment
 
 This Remix Stack comes with two GitHub Actions that handle automatically deploying your app to production and staging environments.
 
