@@ -25,6 +25,19 @@
   - edit `posts.server.ts` to do this (see commit)
   - verify all fields fetched from seeded db via Network > Preview (posts data) using browser inspect
 
+```bash
+commit 2bec374cdb8b53d1d013e597fb0e9a9ad3cc714b (HEAD -> main)
+Author: victorkane <victorkane@gmail.com>
+Date:   Tue Sep 5 12:23:52 2023 -0300
+
+    lesson 07 model app data in prisma schema, seed db and fetch data from db
+
+ app/models/post.server.ts | 17 +---
+ prisma/schema.prisma      |  9 +++
+ prisma/seed.ts            | 30 ++++++++
+ 3 files changed, 41 insertions(+), 15 deletions(-)
+```
+
 ---
 
 ## Remix Indie Stack
