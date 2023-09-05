@@ -38,6 +38,11 @@ Date:   Tue Sep 5 12:23:52 2023 -0300
  3 files changed, 41 insertions(+), 15 deletions(-)
 ```
 
+### Lesson 10 Process markdown on the server using a Remix loader
+
+- Again, we are sending the minimum to the client, since the js and post details are only needed by the server for loading the data
+  and processing te markdown
+
 ---
 
 ## Remix Indie Stack
