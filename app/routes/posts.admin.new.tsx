@@ -1,15 +1,10 @@
-import { ActionFunction } from "@remix-run/node";
+import { ActionFunction, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 
 const inputClassName = `w-full rounded border border-gray-500 px-2 py-1 text-lg`;
 
 export const action: ActionFunction = async ({ request }) => {
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: "/posts/admin",
-    },
-  });
+  return redirect("/posts/admin");
 };
 
 export default function NewPostRoute() {
