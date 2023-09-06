@@ -1,9 +1,29 @@
-import { ActionFunction, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
+import { redirect } from "@remix-run/node";
+
+// import type { ActionFunction } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
 
 const inputClassName = `w-full rounded border border-gray-500 px-2 py-1 text-lg`;
 
+// this doesn't work
+/*
 export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData;
+  const title = formData.get("title");
+  console.log("title", title);
+  return redirect("/posts/admin");
+};
+*/
+
+// this (brazenly taken from `notes.new.tsx`) DOES work
+export const action = async ({ request }: ActionArgs) => {
+  const formData = await request.formData();
+  const title = formData.get("title");
+  const slug = formData.get("slug");
+  const markdown = formData.get("markdown");
+  console.log("title, slug, markdown");
+  console.log(title, slug, markdown);
   return redirect("/posts/admin");
 };
 
